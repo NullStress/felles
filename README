@@ -1,3 +1,8 @@
+For å kjøre app i dev:
+
+node_modules/webpack-dev-server/bin/webpack-dev-server.js --mode development
+
+
 For å starte json-server på port 3004:
 
 json-server --watch api.json --port 3004
