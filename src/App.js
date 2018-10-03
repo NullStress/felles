@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {hot} from "react-hot-loader";
-import Account from "./components/account/Account"
+import Accounts from "./containers/accounts/Accounts"
 import Person from "./components/person/Person"
 import "./App.css";
 
@@ -9,7 +9,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Person/>
-                <Account/>
+                <Accounts/>
             </div>
         );
     }
