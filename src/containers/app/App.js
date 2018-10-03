@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {hot} from "react-hot-loader";
-import Accounts from "./containers/accounts/Accounts"
-import Person from "./components/person/Person"
+import Accounts from "../accounts/Accounts"
+import Person from "../../components/person/Person"
 import "./App.css";
 
 class App extends Component {
