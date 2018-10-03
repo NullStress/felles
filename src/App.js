@@ -7,12 +7,6 @@ class App extends Component{
     return(
       <div className="App">
         <h1> Hello, World! </h1>
-	<section className="main">
-	    <form>
-	       <input type="text"/>
-	       <input type="submit"/>
-	    </form>
-	</section>
       </div>
     );
   }
