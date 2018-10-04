@@ -1,12 +1,11 @@
 import React, {Component} from "react";
 import {hot} from "react-hot-loader";
-import { Link } from "react-router-dom"
+import {Link} from "react-router-dom"
 import Accounts from "../accounts/Accounts"
 import Person from "../../components/person/Person"
 import "./App.css";
 import axios from "axios";
 import * as Constants from "../../constants";
-import Account from "../../components/account/Account";
 
 class App extends Component {
 
@@ -35,8 +34,8 @@ class App extends Component {
     }
 
     getPerson(ssn) {
-        let foundPerson = {"accounts" : []};
-        if(this.state.persons[0]) {
+        let foundPerson = {"accounts": []};
+        if (this.state.persons[0]) {
             this.state.persons.forEach(person => {
                 if (person.ssn === (ssn)) {
                     foundPerson = person;
@@ -55,8 +54,29 @@ class App extends Component {
         return <Accounts value={this.getAccounts(ssn)}/>
     }
 
+    sumAccountTransactions(account) {
+        if (!account) {
+            return
+        }
+        let out = 0;
+        let incoming = 0;
+        account.transactions.forEach(transaction => {
+                if (transaction.amount >= 0.0) {
+                    incoming += transaction.amount;
+                } else {
+                    out -= transaction.amount;
+                }
+            }
+        );
+        let sum = incoming - out;
+        const sumTransaction = {"sum": sum, "incoming": incoming, "out": out};
+        console.log("Account number: " + account.number + sumTransaction);
+    }
+
     render() {
         const ssn = "10128512336";
+        const accounts = this.getAccounts(ssn);
+        this.sumAccountTransactions(accounts[0]);
         return (
             <div className="App">
                 {this.renderPerson(ssn)}
