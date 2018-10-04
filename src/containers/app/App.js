@@ -6,6 +6,7 @@ import Person from "../../components/person/Person"
 import "./App.css";
 import axios from "axios";
 import * as Constants from "../../constants";
+import Account from "../../components/account/Account";
 
 class App extends Component {
 
@@ -41,13 +42,18 @@ class App extends Component {
         return accounts;
     }
 
+    renderAccounts(ssn) {
+        return <Accounts value={this.getAccounts(ssn)}/>
+    }
+
     render() {
-        let accounts = this.getAccounts("10128512336");
+        const ssn = "10128512336";
+        let accounts = this.getAccounts();
         console.log(accounts);
         return (
             <div className="App">
                 <Person/>
-                <Accounts/>
+                {this.renderAccounts(ssn)}
                 <Link to="/newaccount">legg til konto</Link>
             </div>
         );

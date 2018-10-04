@@ -4,11 +4,13 @@ import Account from "../../components/account/Account"
 import "./Accounts.css";
 
 class Accounts extends Component {
+
     render() {
         return (
             <section>
-                <Account/>
-                <Account/>
+                {this.props.value.map(function(entry, index) {
+                return <Account key={index} value={entry}/>
+            })}
             </section>
         );
     }
