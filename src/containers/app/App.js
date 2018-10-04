@@ -31,16 +31,25 @@ class App extends Component {
     }
 
     getAccounts(ssn) {
-        let accounts = [];
+        return this.getPerson(ssn).accounts;
+    }
+
+    getPerson(ssn) {
+        let foundPerson = {"accounts" : []};
         if(this.state.persons[0]) {
             this.state.persons.forEach(person => {
-                if(person.ssn === (ssn)) {
-                    accounts = person.accounts;
+                if (person.ssn === (ssn)) {
+                    foundPerson = person;
                 }
-            })
+            });
         }
-        return accounts;
+        return foundPerson
     }
+
+    renderPerson(ssn) {
+        return <Person value={this.getPerson(ssn)}/>
+    }
+
 
     renderAccounts(ssn) {
         return <Accounts value={this.getAccounts(ssn)}/>
@@ -52,7 +61,7 @@ class App extends Component {
         console.log(accounts);
         return (
             <div className="App">
-                <Person/>
+                {this.renderPerson(ssn)}
                 {this.renderAccounts(ssn)}
                 <Link to="/newaccount">legg til konto</Link>
             </div>

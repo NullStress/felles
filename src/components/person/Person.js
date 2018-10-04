@@ -6,7 +6,7 @@ class Person extends Component{
     render(){
         return(
             <div className="Person">
-                <span>Pia Strøm</span>
+                <span>{this.props.value.name}</span>
             </div>
         );
     }
