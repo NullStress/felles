@@ -57,8 +57,6 @@ class App extends Component {
 
     render() {
         const ssn = "10128512336";
-        let accounts = this.getAccounts();
-        console.log(accounts);
         return (
             <div className="App">
                 {this.renderPerson(ssn)}
